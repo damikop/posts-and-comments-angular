@@ -1,25 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PostComment} from "../../../models/comment";
-import {PostComponent} from "../post/post.component";
-import {CommentService} from "../../../services/comment.service";
-import {Post} from "../../../models/post";
+import {PostComment} from "../../models/comment";
+import {CommentService} from "../../services/comment.service";
+import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css']
 })
-export class CommentComponent{
-  // @Input post: Post;
+export class CommentComponent implements OnInit{
+  @Input() postId!: number;
+  comments: PostComment[] = [];
 
-  // comments: PostComment[] = [];
+  constructor(private commentService: CommentService) {}
 
-  // constructor(private commentService: CommentService){};
-
-//   ngOnInit(): void {
-//     this.commentService.getComments(this.post.id).subscribe(comment => {
-//       this.comments = comment;
-//   }
-//
-// }
+  ngOnInit(): void {
+    this.commentService.getComments(this.postId).subscribe(comments => {
+        this.comments = comments;
+    })
+  }
 }
