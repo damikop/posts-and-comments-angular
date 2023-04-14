@@ -1,5 +1,9 @@
-<div *ngFor="let comment of comments">
-  <p><strong>{{ comment.name }}</strong></p>
+<div class="border rounded p-4 my-2" *ngFor="let comment of comments">
+  <h3><b>Name:</b></h3>
+  <p>{{ comment.name }}</p>
+  <h3><b>Email:</b></h3>
   <p>{{comment.email}}</p>
+  <h3><b>Content:</b></h3>
   <p>{{ comment.body }}</p>
+
 </div>

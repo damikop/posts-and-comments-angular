@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PostComment} from "../../models/comment";
 import {CommentService} from "../../services/comment.service";
-import {PostService} from "../../services/post.service";
 
 @Component({
   selector: 'app-comment',
@@ -9,7 +8,7 @@ import {PostService} from "../../services/post.service";
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit{
-  @Input() postId!: number;
+  @Input() postId: number;
   comments: PostComment[] = [];
 
   constructor(private commentService: CommentService) {}

@@ -9,7 +9,8 @@ import {PostService} from "../../services/post.service";
 })
 export class PostListComponent implements OnInit{
   posts: Post[]=[];
-  showComments: boolean = false;
+  // showComments: boolean = false;
+  postIdToShowComments: number | null = null;
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
@@ -17,7 +18,10 @@ export class PostListComponent implements OnInit{
     this.posts = posts);
   }
 
-  toggleComments(): void {
-    this.showComments = !this.showComments;
-  }
+  toggleComments(postId: number): void {
+    if (this.postIdToShowComments === postId) {
+      this.postIdToShowComments = null;
+    } else {
+      this.postIdToShowComments = postId;
+    }  }
 }

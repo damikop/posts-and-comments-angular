@@ -1,13 +1,13 @@
-<!--<div *ngFor="let post of posts">-->
-<!--  <app-post [posts]="post"></app-post>-->
-<!--</div>-->
-<div class="post-container" *ngFor="let post of posts">
+
+<div class="py-4 px-6 border rounded mb-2" *ngFor="let post of posts">
+  <h2><b>Title:</b></h2>
   <h3>{{ post.title }}</h3>
+  <h2><b>Content:</b></h2>
   <p>{{ post.body }}</p>
-  <button (click)="toggleComments()">
-    {{showComments ? 'Hide' : 'Show'}} Comments
+  <button class="border px-6 py-2 my-2 bg-emerald-300	text-white rounded-full hover:bg-emerald-100 hover:text-slate-600	" (click)="toggleComments(post.id)">
+    {{postIdToShowComments === post.id ? 'Hide' : 'Show'}} Comments
   </button>
-  <div class="comment-container" *ngIf="showComments">
+  <div class="comment-container" *ngIf="postIdToShowComments === post.id">
     <app-comment [postId]="post.id"></app-comment>
   </div>
 </div>
